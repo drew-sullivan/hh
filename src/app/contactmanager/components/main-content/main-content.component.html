@@ -8,17 +8,9 @@
       <mat-card-title>
         <h2>{{ user.name }}</h2>
       </mat-card-title>
-      <mat-card-subtitle>
-        Birthday {{ user.birthDate | date:'d LLLL' }}
-      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <mat-tab-group>
-        <mat-tab label="Bio">
-          <p>
-            {{user.bio}}
-          </p>
-        </mat-tab>
         <mat-tab label="Notes">
           <app-notes [notes]="user.notes"></app-notes>
         </mat-tab>

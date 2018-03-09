@@ -11,7 +11,7 @@ export class NotesComponent implements OnInit {
 
   @Input() notes: Note[];
 
-  displayedColumns = ['position', 'title', 'date'];
+  displayedColumns = ['title'];
   dataSource: MatTableDataSource<Note>;
 
   constructor() { }
