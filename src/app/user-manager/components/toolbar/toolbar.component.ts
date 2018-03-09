@@ -13,9 +13,9 @@ export class ToolbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
   @Output() toggleTheme = new EventEmitter<void>();
   @Output() toggleDir = new EventEmitter<void>();
-  
+
   constructor(
-    private dialog: MatDialog, 
+    private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router) { }
 
@@ -23,7 +23,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   openAddContactDialog(): void {
-    let dialogRef = this.dialog.open(NewContactDialogComponent, {
+    const dialogRef = this.dialog.open(NewContactDialogComponent, {
       width: '450px'
     });
 
@@ -31,15 +31,15 @@ export class ToolbarComponent implements OnInit {
       console.log('The dialog was closed', result);
 
       if (result) {
-        this.openSnackBar("Contact added", "Navigate")
+        this.openSnackBar('User added', 'Navigate')
           .onAction().subscribe(() => {
-            this.router.navigate(['/contactmanager', result.id]);
+            this.router.navigate(['/user-manager', result.id]);
           });
       }
     });
   }
 
-  openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar> {
+  openSnackBar(message: string, action: string): MatSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, action, {
       duration: 5000,
     });

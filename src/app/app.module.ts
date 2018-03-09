@@ -7,9 +7,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: 'contactmanager', loadChildren: './contactmanager/contactmanager.module#ContactmanagerModule' },
+  { path: 'user-manager', loadChildren: './user-manager/user-manager.module#UserManagerModule' },
   { path: 'demo', loadChildren: './demo/demo.module#DemoModule' },
-  { path: '**', redirectTo: 'contactmanager' }
+  { path: '**', redirectTo: 'user-manager' }
 ];
 
 @NgModule({

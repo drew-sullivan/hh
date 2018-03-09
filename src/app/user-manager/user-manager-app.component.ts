@@ -3,13 +3,13 @@ import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-contactmanager-app',
+  selector: 'app-user-manager-app',
   template: `
     <app-sidenav></app-sidenav>
   `,
   styles: []
 })
-export class ContactmanagerAppComponent implements OnInit {
+export class UserManagerAppComponent implements OnInit {
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconSet(

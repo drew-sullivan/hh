@@ -11,7 +11,7 @@ export class UserService {
   private _users: BehaviorSubject<User[]>;
   private dataStore: {
     users: User[]
-  }
+  };
 
   constructor(private http: HttpClient) {
     this.dataStore = { users: [] };
@@ -32,7 +32,6 @@ export class UserService {
   }
 
   userById(id: number) {
-    // console.log(typeof(+id));
     return this.dataStore.users.find(x => x.id === +id);
   }
 
@@ -50,48 +49,3 @@ export class UserService {
   }
 
 }
-
-const USERS = [
-  {
-      id: 1,
-      firstName: 'Luke',
-      lastName: 'Skywalker',
-      mostHelpfulWith: ['The Light Side', 'Tatooine Politics', 'Moisture Farming'],
-      numClaps: 17
-  },
-  {
-      id: 2,
-      firstName: 'Leia',
-      lastName: 'Organa',
-      mostHelpfulWith: ['Floating through space', 'The Rebellion', 'Summoning Obi-Wan Kenobi for help'],
-      numClaps: 22
-  },
-  {
-      id: 3,
-      firstName: 'Han',
-      lastName: 'Solo',
-      mostHelpfulWith: ['Smuggling', 'Shooting first', 'Escaping Pizza the Hut'],
-      numClaps: 13
-  },
-  {
-      id: 4,
-      firstName: 'Lando',
-      lastName: 'Calrissian',
-      mostHelpfulWith: ['Losing M. Falcon to Han', 'Betrayals at Bespin', 'Capes'],
-      numClaps: 9
-  },
-  {
-      id: 5,
-      firstName: 'Darth',
-      lastName: 'Vader',
-      mostHelpfulWith: ['The Dark Side', 'Shot putting the emperor', 'Getting the Death Star Blown Up'],
-      numClaps: 24
-  },
-  {
-      id: 6,
-      firstName: 'Yoda',
-      lastName: '',
-      mostHelpfulWith: ['The Light Side', 'Doing (but not trying)', '(Jedi) code reviews'],
-      numClaps: 8
-  }
-];

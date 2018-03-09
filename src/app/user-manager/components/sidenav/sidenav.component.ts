@@ -18,11 +18,11 @@ export class SidenavComponent implements OnInit {
     matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
 
   users: Observable<User[]>;
-  isDarkTheme: boolean = false;
-  dir: string = 'ltr';
+  isDarkTheme = false;
+  dir = 'ltr';
 
   constructor(
-    zone: NgZone, 
+    zone: NgZone,
     private userService: UserService,
     private router: Router) {
     this.mediaMatcher.addListener(mql =>
@@ -36,7 +36,7 @@ export class SidenavComponent implements OnInit {
   }
 
   toggleDir() {
-    this.dir = this.dir == 'ltr' ? 'rtl' : 'ltr';
+    this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr';
     this.sidenav.toggle().then(() => this.sidenav.toggle());
   }
 
@@ -45,8 +45,9 @@ export class SidenavComponent implements OnInit {
     this.userService.loadAll();
 
     this.router.events.subscribe(() => {
-      if (this.isScreenSmall())
+      if (this.isScreenSmall()) {
         this.sidenav.close();
+      }
     });
   }
 
