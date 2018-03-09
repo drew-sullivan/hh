@@ -28,8 +28,7 @@ export class MainContentComponent implements OnInit {
           this.user = this.service.userById(id);
         }, 500);
       });
-
-    })
+    });
   }
 
 }
