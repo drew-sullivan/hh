@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
-import { NewContactDialogComponent } from '../new-contact-dialog/new-contact-dialog.component';
+import { NewUserDialogComponent } from '../new-user-dialog/new-user-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,8 +22,8 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  openAddContactDialog(): void {
-    const dialogRef = this.dialog.open(NewContactDialogComponent, {
+  openAddUserDialog(): void {
+    const dialogRef = this.dialog.open(NewUserDialogComponent, {
       width: '450px'
     });
 
