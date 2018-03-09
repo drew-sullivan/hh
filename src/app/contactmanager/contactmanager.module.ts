@@ -40,13 +40,13 @@ const routes: Routes = [
     UserService
   ],
   declarations: [
-    ContactmanagerAppComponent, 
-    ToolbarComponent, 
-    MainContentComponent, 
-    SidenavComponent, 
-    NotesComponent, 
+    ContactmanagerAppComponent,
+    ToolbarComponent,
+    MainContentComponent,
+    SidenavComponent,
+    NotesComponent,
     NewContactDialogComponent
-  ], 
+  ],
   entryComponents: [
     NewContactDialogComponent
   ]
