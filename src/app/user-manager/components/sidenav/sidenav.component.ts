@@ -17,7 +17,6 @@ export class SidenavComponent implements OnInit {
   private mediaMatcher: MediaQueryList =
     matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
   users: Observable<User[]>;
-  isDarkTheme = false;
   dir = 'ltr';
   @ViewChild(MatSidenav) sidenav: MatSidenav;
 
