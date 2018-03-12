@@ -9,9 +9,11 @@
 
     <mat-nav-list>
       <mat-list-item *ngFor="let user of users | async">
-         <a matLine [routerLink]="['/user-manager', user.id]">
-           <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{ user.name }}
-         </a>
+        <a matLine [routerLink]="['/user-manager', user.id]">
+          <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{ user.name }}
+        </a>
+        <i class="material-icons">thumb_up</i>
+        <span>{{user.numClaps}}</span>
       </mat-list-item>
     </mat-nav-list>
 
