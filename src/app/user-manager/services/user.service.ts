@@ -45,8 +45,9 @@ export class UserService {
 
     return this.http.get<User[]>(usersUrl)
       .subscribe(data => {
-        this.dataStore.users = data;
-        console.log(this.dataStore.users);
+        // console.log(data);
+        this.dataStore.users = data.sort(sortByNumClaps);
+        // console.log(this.dataStore.users);
         this._users.next(Object.assign({}, this.dataStore).users);
       }, error => {
         console.log('Failed to fetch users');
@@ -54,3 +55,5 @@ export class UserService {
   }
 
 }
+
+const sortByNumClaps = (user1: User, user2: User): number => user2.numClaps - user1.numClaps;
