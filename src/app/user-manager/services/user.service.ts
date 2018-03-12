@@ -35,6 +35,11 @@ export class UserService {
     return this.dataStore.users.find(x => x.id === +id);
   }
 
+  addClap(id: number) {
+    const clappedPerson = this.dataStore.users.find(user => user.id === id);
+    clappedPerson.numClaps++;
+  }
+
   loadAll() {
     const usersUrl = 'https://drew-sullivan.github.io/angular-material-pluralsight-data.html';
 

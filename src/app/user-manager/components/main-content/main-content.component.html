@@ -7,8 +7,8 @@
       <mat-icon mat-card-avatar svgIcon="{{user.avatar}}"></mat-icon>
       <mat-card-title>
         <h2>{{ user.name }}</h2>
-        <i class="material-icons" color="primary">thumb_up</i>
-        <span>{{user.numClaps}}</span>
+        <i class="material-icons" color="primary" (click)="incrementClap(user.id)">thumb_up</i>
+        <span (click)="incrementClap(user.id)">{{user.numClaps}}</span>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>

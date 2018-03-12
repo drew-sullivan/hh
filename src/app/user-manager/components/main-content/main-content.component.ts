@@ -31,4 +31,8 @@ export class MainContentComponent implements OnInit {
     });
   }
 
+  incrementClap(id: number) {
+    this.service.addClap(id);
+  }
+
 }
