@@ -41,13 +41,11 @@ export class UserService {
   }
 
   loadAll() {
-    const usersUrl = 'https://drew-sullivan.github.io/angular-material-pluralsight-data.html';
+    const usersUrl = 'https://drew-sullivan.github.io/hyland-helpers-data.txt';
 
     return this.http.get<User[]>(usersUrl)
       .subscribe(data => {
-        // console.log(data);
         this.dataStore.users = data.sort(sortByNumClaps);
-        // console.log(this.dataStore.users);
         this._users.next(Object.assign({}, this.dataStore).users);
       }, error => {
         console.log('Failed to fetch users');

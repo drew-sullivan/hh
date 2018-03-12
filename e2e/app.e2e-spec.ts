@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angularmaterial App', () => {
+describe('Hyland Helpers', () => {
   let page: AppPage;
 
   beforeEach(() => {

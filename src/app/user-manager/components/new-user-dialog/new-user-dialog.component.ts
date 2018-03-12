@@ -49,6 +49,7 @@ export class NewUserDialogComponent implements OnInit {
   }
 
   addNewUser() {
+    this.user.numClaps = 0;
     this.userService.addUser(this.user).then(user => {
       this.dialogRef.close(user);
     });
