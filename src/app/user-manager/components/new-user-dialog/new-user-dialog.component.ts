@@ -44,27 +44,11 @@ export class NewUserDialogComponent implements OnInit {
     }
   }
 
-  addNewUser() {
-    console.log(this.name);
-    console.log(this.skills);
-
-    const user: any = {
-      id: -1 , // this will be set in the service
-      numClaps: 0,
-      name: this.name,
-      skills: this.skills
-    };
-
-    console.log(user);
-    this.userService.addUser(user);
-  }
-
   customTrackBy(index: number, obj: any): any {
     return index;
   }
 
-  save() {
-    console.log(this.user);
+  addNewUser() {
     this.userService.addUser(this.user).then(user => {
       this.dialogRef.close(user);
     });
