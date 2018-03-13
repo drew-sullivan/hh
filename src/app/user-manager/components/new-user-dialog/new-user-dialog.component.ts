@@ -11,11 +11,41 @@ import { UserService } from '../../services/user.service';
 })
 export class NewUserDialogComponent implements OnInit {
 
+
+  SKIN_PIGMENTS = [
+    'skin_ddc994',
+    'skin_f5a76e',
+    'skin_ea8349',
+    'skin_c06534',
+    'skin_98461a',
+    'skin_915533',
+  ];
+
+  HAIR_CODES = [
+    'hair_bangs_2_brown',
+    'hair_bangs_2_black',
+    'hair_bangs_2_blond',
+    'hair_bangs_2_red',
+    'hair_bangs_2_white',
+  ];
+
+  SHIRT_COLORS = [
+    'slim_shirt_black',
+    'slim_shirt_blue',
+    'slim_shirt_green',
+    'slim_shirt_pink',
+    'slim_shirt_yellow',
+  ];
+
   avatars = [
     'svg-1', 'svg-2', 'svg-3', 'svg-4'
   ];
   user: User;
   skills = [''];
+
+  hair = 'hair_bangs_2_brown';
+  pigment = 'skin_ea8349';
+  shirt = 'slim_shirt_green';
 
   constructor(
     private dialogRef: MatDialogRef<NewUserDialogComponent>,

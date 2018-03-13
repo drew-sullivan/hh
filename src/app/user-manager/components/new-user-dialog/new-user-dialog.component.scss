@@ -7,20 +7,28 @@
   width: 100%;
 }
 
-
-.skin {
+.hair {
   position: absolute;
-  z-index: 1;
+  z-index: 30;
+}
+
+.pigment {
+  position: absolute;
+  z-index: 20;
 }
 
 .shirt {
-  margin-top: -90px;
+  position: absolute;
+  z-index: 40;
 }
 
-.hair {
-  position: absolute;
-  z-index: 3;
-  margin-bottom: -80px !important;
+.avatar-box {
+  margin: auto;
+  min-height: 100px;
+}
+
+.avatar-position {
+  margin-left: 140px;
 }
 
 %height-width-box {
