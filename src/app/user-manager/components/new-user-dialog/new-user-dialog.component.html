@@ -27,6 +27,73 @@
       <button *ngIf="i == skills.length - 1" [disabled]="skills.length > 4" mat-raised-button color="primary" (click)="addNewSkill()">+</button>
     </div>
 
+    <mat-form-field>
+        <mat-select [(value)]="pigment">
+          <mat-option value="skin_ea8349">
+            <div class="skin_ea8349"></div>
+          </mat-option>
+          <mat-option value="skin_f5a76e">
+            <div class="skin_f5a76e"></div>
+          </mat-option>
+          <mat-option value="skin_c06534">
+            <div class="skin_c06534"></div>
+          </mat-option>
+          <mat-option value="skin_915533">
+            <div class="skin_915533"></div>
+          </mat-option>
+          <mat-option value="skin_ddc994">
+            <div class="skin_ddc994"></div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(value)]="hair">
+          <mat-option value="hair_bangs_2_brown">
+            <div class="hair_bangs_2_brown"></div>
+          </mat-option>
+          <mat-option value="hair_bangs_2_black">
+            <div class="hair_bangs_2_black"></div>
+          </mat-option>
+          <mat-option value="hair_bangs_2_blond">
+            <div class="hair_bangs_2_blond"></div>
+          </mat-option>
+          <mat-option value="hair_bangs_2_red">
+            <div class="hair_bangs_2_red"></div>
+          </mat-option>
+          <mat-option value="hair_bangs_2_white">
+            <div class="hair_bangs_2_white"></div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(value)]="shirt">
+          <mat-option value="slim_shirt_black">
+            <div class="slim_shirt_black"></div>
+          </mat-option>
+          <mat-option value="slim_shirt_blue">
+            <div class="slim_shirt_blue"></div>
+          </mat-option>
+          <mat-option value="slim_shirt_green">
+            <div class="slim_shirt_green"></div>
+          </mat-option>
+          <mat-option value="slim_shirt_pink">
+            <div class="slim_shirt_pink"></div>
+          </mat-option>
+          <mat-option value="slim_shirt_yellow">
+            <div class="slim_shirt_yellow"></div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <p>You selected: {{pigment}}</p>
+      <p>You selected: {{hair}}</p>
+      <p>You selected: {{shirt}}</p>
+      <div class="{{hair}} hair"></div>
+      <div class="{{pigment}} pigment"></div>
+      <div class="{{shirt}} shirt"></div>
+
+
+
   </div>
 
 </mat-dialog-content>

@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +12,7 @@ import { UserService } from '../../services/user.service';
 export class MainContentComponent implements OnInit {
 
   user: User;
+
   constructor(
     private route: ActivatedRoute,
     private service: UserService) { }
