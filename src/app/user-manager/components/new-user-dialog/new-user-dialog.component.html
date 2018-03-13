@@ -4,7 +4,7 @@
   <div class="example-container">
 
     <mat-form-field>
-      <mat-select placeholder="Avatar" [(ngModel)]="user.avatar">
+      <mat-select [(ngModel)]="user.avatar" placeholder="Avatar">
         <mat-select-trigger>
           <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{ user.avatar }}
         </mat-select-trigger>
@@ -29,21 +29,21 @@
 
     
     <mat-form-field>
-      <mat-select [(value)]="pigment" placeholder="Ethnicity">
+      <mat-select [(ngModel)]="user.avatar2.skinPigment" placeholder="Ethnicity">
         <mat-option value="{{skinPigment}}" *ngFor="let skinPigment of SKIN_PIGMENTS">
           <div class="{{skinPigment}}"></div>
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-select [(value)]="hair" placeholder="Hair Color">
-        <mat-option value="{{hairCode}}" *ngFor="let hairCode of HAIR_CODES">
-          <div class="{{hairCode}}"></div>
+      <mat-select [(ngModel)]="user.avatar2.hairColor" placeholder="Hair Color">
+        <mat-option value="{{hairColor}}" *ngFor="let hairColor of HAIR_COLORS">
+          <div class="{{hairColor}}"></div>
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-select [(value)]="shirt" placeholder="Shirt Color">
+      <mat-select [(ngModel)]="user.avatar2.shirtColor" placeholder="Shirt Color">
         <mat-option value="{{shirtColor}}" *ngFor="let shirtColor of SHIRT_COLORS">
           <div class="{{shirtColor}}"></div>
         </mat-option>
@@ -51,9 +51,9 @@
     </mat-form-field>
     <div class="avatar-box">
       <div class="avatar-position">
-        <div class="{{hair}} hair"></div>
-        <div class="{{pigment}} pigment"></div>
-        <div class="{{shirt}} shirt"></div>
+        <div class="{{user.avatar2.hairColor}} hair"></div>
+        <div class="{{user.avatar2.skinPigment}} pigment"></div>
+        <div class="{{user.avatar2.shirtColor}} shirt"></div>
       </div>
     </div>
       

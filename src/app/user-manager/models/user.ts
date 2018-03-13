@@ -3,6 +3,10 @@ export class User {
     name: string;
     avatar: string;
     numClaps: number;
-
     skills: string[] = [];
+    avatar2: {
+        skinPigment: string;
+        hairColor: string;
+        shirtColor: string;
+    };
 }

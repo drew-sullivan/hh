@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { User } from '../../models/user';
 import { FormControl, Validators } from '@angular/forms';
+
 import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
+import { SKIN_PIGMENTS, HAIR_COLORS, SHIRT_COLORS } from '../../../../assets/avatar-codes';
 
 @Component({
   selector: 'app-new-user-dialog',
@@ -11,31 +13,9 @@ import { UserService } from '../../services/user.service';
 })
 export class NewUserDialogComponent implements OnInit {
 
-
-  SKIN_PIGMENTS = [
-    'skin_ddc994',
-    'skin_f5a76e',
-    'skin_ea8349',
-    'skin_c06534',
-    'skin_98461a',
-    'skin_915533',
-  ];
-
-  HAIR_CODES = [
-    'hair_bangs_2_brown',
-    'hair_bangs_2_black',
-    'hair_bangs_2_blond',
-    'hair_bangs_2_red',
-    'hair_bangs_2_white',
-  ];
-
-  SHIRT_COLORS = [
-    'slim_shirt_black',
-    'slim_shirt_blue',
-    'slim_shirt_green',
-    'slim_shirt_pink',
-    'slim_shirt_yellow',
-  ];
+  SKIN_PIGMENTS: string[] = SKIN_PIGMENTS;
+  HAIR_COLORS: string[] = HAIR_COLORS;
+  SHIRT_COLORS: string[] = SHIRT_COLORS;
 
   avatars = [
     'svg-1', 'svg-2', 'svg-3', 'svg-4'
@@ -43,9 +23,9 @@ export class NewUserDialogComponent implements OnInit {
   user: User;
   skills = [''];
 
-  hair = 'hair_bangs_2_brown';
-  pigment = 'skin_ea8349';
-  shirt = 'slim_shirt_green';
+  hairColor = 'hair_bangs_2_brown';
+  skinPigment = 'skin_ea8349';
+  shirtColor = 'slim_shirt_green';
 
   constructor(
     private dialogRef: MatDialogRef<NewUserDialogComponent>,
@@ -59,6 +39,13 @@ export class NewUserDialogComponent implements OnInit {
 
   ngOnInit() {
     this.user = new User();
+
+    // adding avatar2 for previewing avatar choices
+    this.user.avatar2 = {
+      hairColor: this.hairColor,
+      skinPigment: this.skinPigment,
+      shirtColor: this.shirtColor
+    };
   }
 
   addNewSkill() {
@@ -80,9 +67,10 @@ export class NewUserDialogComponent implements OnInit {
 
   addNewUser() {
     this.user.numClaps = 0;
-    this.userService.addUser(this.user).then(user => {
-      this.dialogRef.close(user);
-    });
+    console.log(this.user);
+    // this.userService.addUser(this.user).then(user => {
+    //   this.dialogRef.close(user);
+    // });
   }
 
   dismiss() {
