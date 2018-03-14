@@ -1,8 +1,11 @@
+import { ICONS } from './../../../../assets/svg/manifest-of-icons';
+import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-main-content',
@@ -12,10 +15,17 @@ import { UserService } from '../../services/user.service';
 export class MainContentComponent implements OnInit {
 
   user: User;
+  icons = ICONS;
 
   constructor(
     private route: ActivatedRoute,
-    private service: UserService) { }
+    private service: UserService,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer) {
+      for (const icon of this.icons) {
+        iconRegistry.addSvgIcon(`${icon}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${icon}.svg`));
+      }
+    }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -28,13 +38,18 @@ export class MainContentComponent implements OnInit {
 
         setTimeout(() => {
           this.user = this.service.userById(id);
-        }, 500);
+        }, 1);
       });
     });
   }
 
   incrementClap(id: number) {
     this.service.addClap(id);
+  }
+
+  addGift(event: any) {
+    const gift = event.value;
+    this.user.gifts.push(gift);
   }
 
 }

@@ -15,6 +15,23 @@
         <span (click)="incrementClap(user.id)">{{user.numClaps}}</span>
       </div>
     </mat-card-header>
+
+    <mat-form-field>
+      <mat-label>Give Gift</mat-label>
+      <mat-select (change)="addGift($event)">
+        <mat-option *ngFor="let icon of icons" value="{{icon}}">
+          <mat-icon svgIcon="{{icon}}"></mat-icon>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-label>{{user.name}}'s gifts:</mat-label>
+    <div class="gift-box">
+      <div *ngFor="let gift of user.gifts" class="user-gift">
+        <mat-icon svgIcon="{{gift}}"></mat-icon>
+      </div>
+    </div>
+      
     <mat-card-content>
       <mat-tab-group>
         <mat-tab label="Skills">

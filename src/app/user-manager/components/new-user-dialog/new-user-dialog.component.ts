@@ -64,9 +64,9 @@ export class NewUserDialogComponent implements OnInit {
   addNewUser() {
     this.user.numClaps = 0;
     console.log(this.user);
-    // this.userService.addUser(this.user).then(user => {
-    //   this.dialogRef.close(user);
-    // });
+    this.userService.addUser(this.user).then(user => {
+      this.dialogRef.close(user);
+    });
   }
 
   dismiss() {

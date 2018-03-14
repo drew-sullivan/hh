@@ -4,17 +4,6 @@
   <div class="example-container">
 
     <mat-form-field>
-      <mat-select [(ngModel)]="user.avatar" placeholder="Avatar">
-        <mat-select-trigger>
-          <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{ user.avatar }}
-        </mat-select-trigger>
-        <mat-option *ngFor="let avatar of avatars" [value]="avatar">
-          <mat-icon svgIcon="{{avatar}}"></mat-icon> {{ avatar }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
       <input matInput placeholder="Name" [formControl]="name" [(ngModel)]="user.name" required>
       <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
@@ -29,6 +18,7 @@
 
     
     <mat-form-field>
+      <mat-label>Ethnicity</mat-label>
       <mat-select [(ngModel)]="user.avatar2.skinPigment" placeholder="Ethnicity">
         <mat-option value="{{skinPigment}}" *ngFor="let skinPigment of SKIN_PIGMENTS">
           <div class="{{skinPigment}}"></div>
@@ -36,6 +26,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
+      <mat-label>Hair Color</mat-label>
       <mat-select [(ngModel)]="user.avatar2.hairColor" placeholder="Hair Color">
         <mat-option value="{{hairColor}}" *ngFor="let hairColor of HAIR_COLORS">
           <div class="{{hairColor}}"></div>
@@ -43,6 +34,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
+      <mat-label>Shirt Color</mat-label>
       <mat-select [(ngModel)]="user.avatar2.shirtColor" placeholder="Shirt Color">
         <mat-option value="{{shirtColor}}" *ngFor="let shirtColor of SHIRT_COLORS">
           <div class="{{shirtColor}}"></div>
