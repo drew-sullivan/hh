@@ -10,12 +10,12 @@
     <mat-nav-list>
       <mat-list-item *ngFor="let user of users | async">
         <a matLine [routerLink]="['/user-manager', user.id]">
-          <div class="sidenav-a-box">
+          <div class="avatar-box">
             <div class="{{user.avatar2.hairColor}} hair"></div>
             <div class="{{user.avatar2.skinPigment}} pigment"></div>
             <div class="{{user.avatar2.shirtColor}} shirt"></div>
           </div>
-          <div class="sidenav-name-box">{{ user.name }}</div>
+          <div class="name-box">{{ user.name }}</div>
         </a>
         <div class="claps-box">
           <i class="material-icons" (click)="incrementClap(user.id)">thumb_up</i>

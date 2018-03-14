@@ -10,7 +10,7 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.scss', '../../../../assets/avatar-piece-locations.scss']
 })
 export class SidenavComponent implements OnInit {
 

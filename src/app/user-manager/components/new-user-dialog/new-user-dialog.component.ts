@@ -9,17 +9,13 @@ import { SKIN_PIGMENTS, HAIR_COLORS, SHIRT_COLORS } from '../../../../assets/ava
 @Component({
   selector: 'app-new-user-dialog',
   templateUrl: './new-user-dialog.component.html',
-  styleUrls: ['./new-user-dialog.component.scss']
+  styleUrls: ['./new-user-dialog.component.scss', '../../../../assets/avatar-piece-locations.scss']
 })
 export class NewUserDialogComponent implements OnInit {
 
   SKIN_PIGMENTS: string[] = SKIN_PIGMENTS;
   HAIR_COLORS: string[] = HAIR_COLORS;
   SHIRT_COLORS: string[] = SHIRT_COLORS;
-
-  avatars = [
-    'svg-1', 'svg-2', 'svg-3', 'svg-4'
-  ];
   user: User;
   skills = [''];
 
