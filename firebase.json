@@ -1,6 +1,10 @@
 {
   "hosting": {
     "public": "dist",
+    "rules": {
+      ".read": true,
+      ".write": true
+    },
     "ignore": [
       "firebase.json",
       "**/.*",

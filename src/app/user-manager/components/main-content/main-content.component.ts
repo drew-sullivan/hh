@@ -31,15 +31,19 @@ export class MainContentComponent implements OnInit {
     this.route.params.subscribe(params => {
       let id = params['id'];
       if (!id) { id = 1; }
-      this.user = null;
 
-      this.service.users.subscribe(users => {
-        if (users.length === 0) { return; }
+      // this.user = null;
+      this.user = this.service.userById(id);
+      console.log(this.user);
 
-        setTimeout(() => {
-          this.user = this.service.userById(id);
-        }, 1);
-      });
+
+
+      // this.service.users.subscribe(users => {
+      //   if (users.length === 0) { return; }
+
+      //   setTimeout(() => {
+      //   }, 1);
+      // });
     });
   }
 

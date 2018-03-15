@@ -8,7 +8,7 @@
     </mat-toolbar>
 
     <mat-nav-list>
-      <mat-list-item *ngFor="let user of users | async">
+      <mat-list-item *ngFor="let user of usersFB | async">
         <a matLine [routerLink]="['/user-manager', user.id]">
           <div class="avatar-box">
             <div class="{{user.avatar2.hairColor}} hair"></div>

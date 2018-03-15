@@ -1,0 +1,56 @@
+{
+	"users": {
+		"user_1": {
+			"id": 1,
+			"name": "Drew Sullivan",
+			"avatar": "svg-1",
+			"numClaps": 17,
+			"skills": ["JavaScript", "React", "Angular"],
+			"gifts": ["gem", "coin", "sword"],
+			"avatar2": {
+				"skinPigment": "skin_f5a76e",
+				"hairColor": "hair_bangs_2_black",
+				"shirtColor": "slim_shirt_pink"
+			}
+		},
+		"user_2": {
+			"id": 2,
+			"name": "Levi Neal",
+			"avatar": "svg-2",
+			"numClaps": 19,
+			"skills": ["Java", "C++", "SQL"],
+			"gifts": ["coin", "heart", "sparkles"],
+			"avatar2": {
+				"skinPigment": "skin_ddc994",
+				"hairColor": "hair_bangs_2_brown",
+				"shirtColor": "slim_shirt_green"
+			}
+		},
+		"user_3": {
+			"id": 3,
+			"name": "Sandy Armstrong",
+			"avatar": "svg-3",
+			"numClaps": 16,
+			"skills": ["iOS", "Android", "Javascript"],
+			"gifts": ["sparkles", "star", "sword"],
+			"avatar2": {
+				"skinPigment": "skin_98461a",
+				"hairColor": "hair_bangs_2_black",
+				"shirtColor": "slim_shirt_blue"
+			}
+		},
+		"user_4": {
+			"id": 4,
+			"name": "Marcia Higgins",
+			"avatar": "svg-4",
+			"numClaps": 20,
+			"skills": ["Python", "Flask", "Django"],
+			"gifts": ["wizard-hat", "star", "coin"],
+			"avatar2": {
+				"skinPigment": "skin_f5a76e",
+				"hairColor": "hair_bangs_2_red",
+				"shirtColor": "slim_shirt_black"
+			}
+		}
+	}
+}

@@ -40,17 +40,17 @@ export class UserService {
     clappedPerson.numClaps++;
   }
 
-  loadAll() {
-    const usersUrl = 'https://drew-sullivan.github.io/hyland-helpers-data.txt';
+  // loadAll() {
+  //   const usersUrl = 'https://drew-sullivan.github.io/hyland-helpers-data.txt';
 
-    return this.http.get<User[]>(usersUrl)
-      .subscribe(data => {
-        this.dataStore.users = data.sort(sortByNumClaps);
-        this._users.next(Object.assign({}, this.dataStore).users);
-      }, error => {
-        console.log('Failed to fetch users');
-      });
-  }
+  //   return this.http.get<User[]>(usersUrl)
+  //     .subscribe(data => {
+  //       this.dataStore.users = data.sort(sortByNumClaps);
+  //       this._users.next(Object.assign({}, this.dataStore).users);
+  //     }, error => {
+  //       console.log('Failed to fetch users');
+  //     });
+  // }
 
 }
 

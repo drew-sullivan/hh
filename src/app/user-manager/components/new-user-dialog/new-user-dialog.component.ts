@@ -63,6 +63,7 @@ export class NewUserDialogComponent implements OnInit {
 
   addNewUser() {
     this.user.numClaps = 0;
+    this.user.gifts = ['coin', 'coin', 'coin'];
     console.log(this.user);
     this.userService.addUser(this.user).then(user => {
       this.dialogRef.close(user);
