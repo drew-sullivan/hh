@@ -31,7 +31,7 @@ export class SidenavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.usersFB = this.getUsers('/users');
+  //  this.usersFB = this.getUsers('/users');
     this.users = this.userService.users;
     // this.userService.loadAll();
 
