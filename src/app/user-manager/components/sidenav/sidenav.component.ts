@@ -4,7 +4,6 @@ import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material';
-import { AngularFireDatabase } from 'angularfire2/database';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -24,14 +23,12 @@ export class SidenavComponent implements OnInit {
   constructor(
     zone: NgZone,
     private userService: UserService,
-    private router: Router,
-    private db: AngularFireDatabase) {
+    private router: Router) {
     this.mediaMatcher.addListener(mql =>
       zone.run(() => this.mediaMatcher = mql));
   }
 
   ngOnInit() {
-    this.usersFB = this.getUsers('/users');
     this.users = this.userService.users;
     // this.userService.loadAll();
 
@@ -40,11 +37,6 @@ export class SidenavComponent implements OnInit {
         this.sidenav.close();
       }
     });
-  }
-
-  getUsers(path): Observable<any[]> {
-    console.log(this.db.list(path).valueChanges());
-    return this.db.list(path).valueChanges();
   }
 
   isScreenSmall(): boolean {

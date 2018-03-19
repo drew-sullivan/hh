@@ -22,8 +22,6 @@ export class UserService {
       this.internalUserSubscription = newUsers;
     });
     this.getUsers('/users').subscribe( (users) => {
-      console.log('USER SERVICE ---- USERS');
-      console.log(users);
       this._users.next(users);
     });
   }
@@ -37,6 +35,7 @@ export class UserService {
     return this._users.asObservable();
   }
 
+  // TODO: This still needs to be changed to use Behavior Subject
   addUser(user: User): Promise<User> {
     return new Promise((resolver, reject) => {
       user.id = this.dataStore.users.length + 1;
@@ -47,21 +46,15 @@ export class UserService {
   }
 
   userById(id: number): User {
-    /*
-    return this.dataStore.users.find(x => x.id === +id);
-    */
-
       const filterUsers: User[] = this.internalUserSubscription.filter( (user) => {
           return user.id == id;
       });
-      console.log(id);
-      console.log(filterUsers);
       return filterUsers[0];
   }
 
   addClap(id: number) {
-    const clappedPerson = this.dataStore.users.find(user => user.id === id);
-    clappedPerson.numClaps++;
+    const userToAddClap = this.userById(id);
+    userToAddClap.numClaps++;
   }
 
   // loadAll() {
