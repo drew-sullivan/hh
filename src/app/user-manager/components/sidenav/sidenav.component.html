@@ -8,12 +8,19 @@
     </mat-toolbar>
 
     <mat-nav-list>
-      <mat-list-item *ngFor="let user of users | async">
+      <mat-list-item *ngFor="let user of usersFB | async">
         <a matLine [routerLink]="['/user-manager', user.id]">
-          <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{ user.name }}
+          <div class="avatar-box">
+            <div class="{{user.avatar2.hairColor}} hair"></div>
+            <div class="{{user.avatar2.skinPigment}} pigment"></div>
+            <div class="{{user.avatar2.shirtColor}} shirt"></div>
+          </div>
+          <div class="name-box">{{ user.name }}</div>
         </a>
-        <i class="material-icons" (click)="incrementClap(user.id)">thumb_up</i>
-        <span (click)="incrementClap(user.id)">{{user.numClaps}}</span>
+        <div class="claps-box">
+          <i class="material-icons" (click)="incrementClap(user.id)">thumb_up</i>
+          <span (click)="incrementClap(user.id)">{{user.numClaps}}</span>
+        </div>
       </mat-list-item>
     </mat-nav-list>
 

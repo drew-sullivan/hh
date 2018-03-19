@@ -1,3 +1,5 @@
+$box-90: 90px !important;
+
 .app-sidenav-container {
   flex: 1;
   position: fixed;
@@ -23,5 +25,27 @@ i {
 span {
   margin-left: 5px;
   margin-top: 9px;
+}
+
+mat-list-item {
+  height: $box-90
+}
+
+mat-option {
+  height: $box-90
+}
+
+.avatar-box {
+  margin-left: -35px;
+}
+
+.name-box {
+  margin-left: 55px;
+  margin-top: 65px
+}
+
+.claps-box {
+  margin-top: 56px;
+  display: inline-flex;
 }
   
