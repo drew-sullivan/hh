@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { NewUserDialogComponent } from '../new-user-dialog/new-user-dialog.component';
+import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,6 +23,23 @@ export class ToolbarComponent implements OnInit {
 
   openAddUserDialog(): void {
     const dialogRef = this.dialog.open(NewUserDialogComponent, {
+      width: '450px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+
+      if (result) {
+        this.openSnackBar('User added', 'Navigate')
+          .onAction().subscribe(() => {
+            this.router.navigate(['/user-manager', result.id]);
+          });
+      }
+    });
+  }
+
+  openEditUserDialog(): void {
+    const dialogRef = this.dialog.open(EditUserDialogComponent, {
       width: '450px'
     });
 

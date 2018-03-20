@@ -10,7 +10,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class UserService {
 
   private _users: BehaviorSubject<User[]>;
-  private internalUserSubscription: User[];
+  internalUserSubscription: User[];
   private dataStore: {
     users: User[]
   };

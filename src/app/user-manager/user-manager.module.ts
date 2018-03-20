@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewUserDialogComponent } from './components/new-user-dialog/new-user-dialog.component';
 import { UserManagerAppComponent } from './user-manager-app.component';
 import { SkillsComponent } from './components/skills/skills.component';
+import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user-dialog.component';
 
 const routes: Routes = [
   {
@@ -44,10 +45,12 @@ const routes: Routes = [
     MainContentComponent,
     SidenavComponent,
     NewUserDialogComponent,
-    SkillsComponent
+    SkillsComponent,
+    EditUserDialogComponent
   ],
   entryComponents: [
-    NewUserDialogComponent
+    NewUserDialogComponent,
+    EditUserDialogComponent
   ]
 })
 export class UserManagerModule { }

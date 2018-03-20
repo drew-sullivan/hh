@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+
+  <div class="example-container">
+
+    <mat-form-field>
+      <input matInput placeholder="Name" [formControl]="name" [(ngModel)]="user.name" required>
+      <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <div *ngFor="let s of skills; let i = index; trackBy: customTrackBy">
+      <mat-form-field matInput style="width: 50%">
+        <input name="skill-{{i}}" id="input-{{i}}" [(ngModel)]="user.skills[i]" matInput placeholder="Skill" name="skill">
+      </mat-form-field>
+      <button [disabled]="skills.length == 1" mat-raised-button color="primary" (click)="removeSkill(i)">-</button>
+      <button *ngIf="i == skills.length - 1" [disabled]="skills.length > 4" mat-raised-button color="primary" (click)="addNewSkill()">+</button>
+    </div>
+
+
+    <mat-form-field>
+      <mat-label>Ethnicity</mat-label>
+      <mat-select [(ngModel)]="user.avatar2.skinPigment" placeholder="Ethnicity">
+        <mat-option value="{{skinPigment}}" *ngFor="let skinPigment of SKIN_PIGMENTS">
+          <div class="{{skinPigment}}"></div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Hair Color</mat-label>
+      <mat-select [(ngModel)]="user.avatar2.hairColor" placeholder="Hair Color">
+        <mat-option value="{{hairColor}}" *ngFor="let hairColor of HAIR_COLORS">
+          <div class="{{hairColor}}"></div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Shirt Color</mat-label>
+      <mat-select [(ngModel)]="user.avatar2.shirtColor" placeholder="Shirt Color">
+        <mat-option value="{{shirtColor}}" *ngFor="let shirtColor of SHIRT_COLORS">
+          <div class="{{shirtColor}}"></div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="avatar-box">
+      <div class="avatar-position">
+        <div class="{{user.avatar2.hairColor}} hair"></div>
+        <div class="{{user.avatar2.skinPigment}} pigment"></div>
+        <div class="{{user.avatar2.shirtColor}} shirt"></div>
+      </div>
+    </div>
+
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="addNewUser()">
+    <mat-icon>save</mat-icon> Save
+  </button>
+  <button mat-button color="primary" (click)="dismiss()">
+    <mat-icon>cancel</mat-icon> Cancel
+  </button>
+</mat-dialog-actions>
