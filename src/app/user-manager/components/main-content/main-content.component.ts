@@ -15,14 +15,14 @@ import { MatIconRegistry } from '@angular/material/icon';
 export class MainContentComponent implements OnInit {
 
   user: User;
-  gift_images = GIFT_IMAGE_NAMES;
+  giftImages = GIFT_IMAGE_NAMES;
 
   constructor(
     private route: ActivatedRoute,
     private service: UserService,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer) {
-      for (const gift_image of this.gift_images) {
+      for (const gift_image of this.giftImages) {
         iconRegistry.addSvgIcon(`${gift_image}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${gift_image}.svg`));
       }
     }
@@ -47,7 +47,8 @@ export class MainContentComponent implements OnInit {
 
   addGift(event: any) {
     const gift = event.value;
-    this.user.gifts.push(gift);
+    // this.user.gifts.push(gift);
+    this.service.addGift(this.user.id, gift);
   }
 
 }
