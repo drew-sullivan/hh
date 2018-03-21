@@ -43,6 +43,11 @@ export class UserService {
     return filterUsers[0];
   }
 
+  addGift(id: number, gift: string) {
+    const user = this.userById(id);
+    console.log(this.db.list(DB_PATH));
+  }
+
   getNextId(): number {
     return Math.max(...this.internalUserSubscription.map(user => user.id)) + 1;
   }

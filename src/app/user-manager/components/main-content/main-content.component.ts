@@ -47,7 +47,8 @@ export class MainContentComponent implements OnInit {
 
   addGift(event: any) {
     const gift = event.value;
-    this.user.gifts.push(gift);
+    // this.user.gifts.push(gift);
+    this.service.addGift(this.user.id, gift);
   }
 
 }
