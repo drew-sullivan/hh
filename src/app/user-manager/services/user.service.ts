@@ -14,20 +14,20 @@ export class UserService {
   private dataStore: {
     users: User[]
   };
+  private nextId: number;
 
   constructor(private http: HttpClient, private db: AngularFireDatabase) {
     this.dataStore = { users: [] };
     this._users = new BehaviorSubject<User[]>([]);
-    this._users.subscribe( (newUsers) => {
-      this.internalUserSubscription = newUsers;
-    });
-    this.getUsers('/users').subscribe( (users) => {
-      this._users.next(users);
-    });
+    this._users.subscribe(
+      newUsers => this.internalUserSubscription = newUsers
+    );
+    this.getUsers('/users').subscribe(
+      users => this._users.next(users)
+    );
   }
 
   getUsers(path): Observable<any[]> {
-    console.log(this.db.list(path).valueChanges());
     return this.db.list(path).valueChanges();
   }
 
@@ -36,38 +36,33 @@ export class UserService {
   }
 
   // TODO: This still needs to be changed to use Behavior Subject
-  addUser(user: User): Promise<User> {
-    return new Promise((resolver, reject) => {
-      user.id = this.dataStore.users.length + 1;
-      this.dataStore.users.push(user);
-      this._users.next(Object.assign({}, this.dataStore).users);
-      resolver(user);
-    });
+  // addUser(user: User): Promise<User> {
+  //   return new Promise((resolver, reject) => {
+  //     user.id = this.dataStore.users.length + 1;
+  //     this.dataStore.users.push(user);
+  //     this._users.next(Object.assign({}, this.dataStore).users);
+  //     resolver(user);
+  //   });
+  // }
+
+  addUser(user: User): void {
+    user.id = this.getNextId();
+    this.db.list('/users').push(user);
   }
 
   userById(id: number): User {
-      const filterUsers: User[] = this.internalUserSubscription.filter( (user) => {
-          return user.id == id;
-      });
-      return filterUsers[0];
+    const filterUsers: User[] = this.internalUserSubscription.filter(user => user.id === +id);
+    return filterUsers[0];
+  }
+
+  getNextId(): number {
+    return Math.max(...this.internalUserSubscription.map(user => user.id)) + 1;
   }
 
   addClap(id: number) {
     const userToAddClap = this.userById(id);
     userToAddClap.numClaps++;
   }
-
-  // loadAll() {
-  //   const usersUrl = 'https://drew-sullivan.github.io/hyland-helpers-data.txt';
-
-  //   return this.http.get<User[]>(usersUrl)
-  //     .subscribe(data => {
-  //       this.dataStore.users = data.sort(sortByNumClaps);
-  //       this._users.next(Object.assign({}, this.dataStore).users);
-  //     }, error => {
-  //       console.log('Failed to fetch users');
-  //     });
-  // }
 
 }
 
