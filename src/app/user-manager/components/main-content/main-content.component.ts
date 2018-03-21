@@ -45,10 +45,6 @@ export class MainContentComponent implements OnInit {
     });
   }
 
-  incrementClap(id: number) {
-    this.service.addClap(id);
-  }
-
   addGift(event: any) {
     const gift = event.value;
     this.user.gifts.push(gift);
