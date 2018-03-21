@@ -5,22 +5,20 @@
   <mat-card>
     <mat-card-header>
       <div class="avatar-box">
-        <div class="{{user.avatar2.hairColor}} hair"></div>
-        <div class="{{user.avatar2.skinPigment}} pigment"></div>
-        <div class="{{user.avatar2.shirtColor}} shirt"></div>
+        <div class="{{user.avatar.hairColor}} hair"></div>
+        <div class="{{user.avatar.skinPigment}} pigment"></div>
+        <div class="{{user.avatar.shirtColor}} shirt"></div>
       </div>
       <div class="name-box">{{ user.name }}</div>
-      <div class="claps-box">
-        <i class="material-icons" (click)="incrementClap(user.id)">thumb_up</i>
-        <span (click)="incrementClap(user.id)">{{user.numClaps}}</span>
-      </div>
+      <div class="inventory_present"></div>
+      <span class="gift-count">x&nbsp;{{user.gifts.length}}</span>
     </mat-card-header>
 
     <mat-form-field>
       <mat-label>Give Gift</mat-label>
       <mat-select (change)="addGift($event)">
-        <mat-option *ngFor="let icon of icons" value="{{icon}}">
-          <mat-icon svgIcon="{{icon}}"></mat-icon>
+        <mat-option *ngFor="let giftImage of giftImageNames" value="{{giftImage}}">
+          <mat-icon svgIcon="{{giftImage}}"></mat-icon>
         </mat-option>
       </mat-select>
     </mat-form-field>

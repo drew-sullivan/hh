@@ -17,7 +17,6 @@ export class SidenavComponent implements OnInit {
   private mediaMatcher: MediaQueryList = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
   @ViewChild(MatSidenav) sidenav: MatSidenav;
   users: Observable<User[]>;
-  usersFB: Observable<User[]>;
   dir = 'ltr';
 
   constructor(
@@ -30,7 +29,6 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit() {
     this.users = this.userService.users;
-    // this.userService.loadAll();
 
     this.router.events.subscribe(() => {
       if (this.isScreenSmall()) {
@@ -41,11 +39,6 @@ export class SidenavComponent implements OnInit {
 
   isScreenSmall(): boolean {
     return this.mediaMatcher.matches;
-  }
-
-  incrementClap(id: number) {
-    console.log(id);
-    this.userService.addClap(id);
   }
 
 }

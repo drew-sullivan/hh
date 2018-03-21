@@ -26,8 +26,6 @@ export class ToolbarComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-
       if (result) {
         this.openSnackBar('User added', 'Navigate')
           .onAction().subscribe(() => {

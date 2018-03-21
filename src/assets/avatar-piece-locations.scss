@@ -2,13 +2,14 @@ $sheet-2: url('./spritesmith-main-2.png');
 $sheet-3: url('./spritesmith-main-3.png');
 $sheet-4: url('./spritesmith-main-4.png');
 $sheet-5: url('./spritesmith-main-5.png');
+$sheet-9: url('./spritesmith-main-9.png');
 
 %height-width-box {
   width: 90px !important;
   height: 90px !important;
 }
 
-// FOR ALIGNING PIECES TOGETHER
+// FOR ALIGNING AVATAR PIECES TOGETHER
 .hair {
   position: absolute;
   z-index: 30;
@@ -157,4 +158,11 @@ $sheet-5: url('./spritesmith-main-5.png');
   background-image: $sheet-2;
   background-position: -637px -364px;
   @extend %height-width-box;
+}
+
+.inventory_present {
+  background-image: $sheet-9;
+  background-position: -425px -1575px;
+  height: 50px;
+  width: 40px;
 }
