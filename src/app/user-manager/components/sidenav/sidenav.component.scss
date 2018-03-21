@@ -41,7 +41,10 @@ mat-option {
 
 .name-box {
   margin-left: 55px;
-  margin-top: 65px
+  margin-top: 65px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .inventory_present {

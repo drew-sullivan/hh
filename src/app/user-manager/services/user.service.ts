@@ -47,5 +47,4 @@ export class UserService {
 
 }
 
-// const sortByNumClaps = (user1: User, user2: User): number => user2.numClaps - user1.numClaps;
 const sortByNumGifts = (user1: User, user2: User): number => user2.gifts.length - user1.gifts.length;
