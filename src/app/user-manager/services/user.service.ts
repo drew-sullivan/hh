@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { resolve } from 'q';
 import { AngularFireDatabase } from 'angularfire2/database';
 
+const DB_PATH = '/users';
+
 @Injectable()
 export class UserService {
 
@@ -18,7 +20,7 @@ export class UserService {
     this._users.subscribe(
       newUsers => this.internalUserSubscription = newUsers.sort(sortByNumGifts)
     );
-    this.getUsersFromDBbyPath('/users').subscribe(
+    this.getUsersFromDBbyPath(DB_PATH).subscribe(
       users => this._users.next(users)
     );
   }
@@ -33,7 +35,7 @@ export class UserService {
 
   addUser(user: User): void {
     user.id = this.getNextId();
-    this.db.list('/users').push(user);
+    this.db.list(DB_PATH).push(user);
   }
 
   userById(id: number): User {

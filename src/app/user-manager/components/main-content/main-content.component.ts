@@ -34,7 +34,7 @@ export class MainContentComponent implements OnInit {
 
       // this.user = null;
       this.user = this.service.userById(id); // TODO: This doesn't seem to work as intended. First user never loads.
-      console.log(this.user);
+      // console.log(this.user);
 
       // this.service.users.subscribe(users => {
       //   if (users.length === 0) { return; }

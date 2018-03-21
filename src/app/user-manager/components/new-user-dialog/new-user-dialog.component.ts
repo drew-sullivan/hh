@@ -7,6 +7,8 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { SKIN_PIGMENTS, HAIR_COLORS, SHIRT_COLORS } from '../../../../assets/avatar-codes';
 
+const NUM_STARTING_GIFTS = 3;
+
 @Component({
   selector: 'app-new-user-dialog',
   templateUrl: './new-user-dialog.component.html',
@@ -20,7 +22,6 @@ export class NewUserDialogComponent implements OnInit {
   user: User;
   skills = [''];
   giftImageNames = GIFT_IMAGE_NAMES;
-  NUM_STARTING_GIFTS = 3;
 
   hairColor = 'hair_bangs_2_brown';
   skinPigment = 'skin_ea8349';
@@ -66,7 +67,7 @@ export class NewUserDialogComponent implements OnInit {
 
   addNewUser() {
     this.user.numClaps = 0;
-    this.user.gifts = getRandomArrayItems(GIFT_IMAGE_NAMES, this.NUM_STARTING_GIFTS);
+    this.user.gifts = getRandomArrayItems(GIFT_IMAGE_NAMES, NUM_STARTING_GIFTS);
     this.userService.addUser(this.user);
     this.dismiss();
   }
