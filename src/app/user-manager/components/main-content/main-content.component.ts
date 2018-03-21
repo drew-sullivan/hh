@@ -1,4 +1,4 @@
-import { ICONS } from './../../../../assets/svg/manifest-of-icons';
+import { GIFT_IMAGE_NAMES } from './../../../../assets/svg/manifest-of-icons';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -15,15 +15,15 @@ import { MatIconRegistry } from '@angular/material/icon';
 export class MainContentComponent implements OnInit {
 
   user: User;
-  icons = ICONS;
+  gift_images = GIFT_IMAGE_NAMES;
 
   constructor(
     private route: ActivatedRoute,
     private service: UserService,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer) {
-      for (const icon of this.icons) {
-        iconRegistry.addSvgIcon(`${icon}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${icon}.svg`));
+      for (const gift_image of this.gift_images) {
+        iconRegistry.addSvgIcon(`${gift_image}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${gift_image}.svg`));
       }
     }
 

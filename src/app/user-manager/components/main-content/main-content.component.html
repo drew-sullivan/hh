@@ -17,8 +17,8 @@
     <mat-form-field>
       <mat-label>Give Gift</mat-label>
       <mat-select (change)="addGift($event)">
-        <mat-option *ngFor="let icon of icons" value="{{icon}}">
-          <mat-icon svgIcon="{{icon}}"></mat-icon>
+        <mat-option *ngFor="let giftImage of giftImageNames" value="{{giftImage}}">
+          <mat-icon svgIcon="{{giftImage}}"></mat-icon>
         </mat-option>
       </mat-select>
     </mat-form-field>

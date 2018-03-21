@@ -1,4 +1,4 @@
-export const ICONS = [
+export const GIFT_IMAGE_NAMES = [
   'gem',
   'coin',
   'heart',
