@@ -40,8 +40,8 @@ export class NewUserDialogComponent implements OnInit {
   ngOnInit() {
     this.user = new User();
 
-    // adding avatar2 for previewing avatar choices
-    this.user.avatar2 = {
+    // adding avatar for previewing avatar choices
+    this.user.avatar = {
       hairColor: this.hairColor,
       skinPigment: this.skinPigment,
       shirtColor: this.shirtColor

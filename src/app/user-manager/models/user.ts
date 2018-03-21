@@ -4,7 +4,7 @@ export class User {
     numClaps: number;
     skills: string[] = [];
     gifts: string[] = [];
-    avatar2: {
+    avatar: {
         skinPigment: string;
         hairColor: string;
         shirtColor: string;

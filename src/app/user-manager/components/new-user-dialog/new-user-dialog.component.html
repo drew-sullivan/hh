@@ -19,7 +19,7 @@
     
     <mat-form-field>
       <mat-label>Ethnicity</mat-label>
-      <mat-select [(ngModel)]="user.avatar2.skinPigment" placeholder="Ethnicity">
+      <mat-select [(ngModel)]="user.avatar.skinPigment" placeholder="Ethnicity">
         <mat-option value="{{skinPigment}}" *ngFor="let skinPigment of SKIN_PIGMENTS">
           <div class="{{skinPigment}}"></div>
         </mat-option>
@@ -27,7 +27,7 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Hair Color</mat-label>
-      <mat-select [(ngModel)]="user.avatar2.hairColor" placeholder="Hair Color">
+      <mat-select [(ngModel)]="user.avatar.hairColor" placeholder="Hair Color">
         <mat-option value="{{hairColor}}" *ngFor="let hairColor of HAIR_COLORS">
           <div class="{{hairColor}}"></div>
         </mat-option>
@@ -35,7 +35,7 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Shirt Color</mat-label>
-      <mat-select [(ngModel)]="user.avatar2.shirtColor" placeholder="Shirt Color">
+      <mat-select [(ngModel)]="user.avatar.shirtColor" placeholder="Shirt Color">
         <mat-option value="{{shirtColor}}" *ngFor="let shirtColor of SHIRT_COLORS">
           <div class="{{shirtColor}}"></div>
         </mat-option>
@@ -43,9 +43,9 @@
     </mat-form-field>
     <div class="avatar-box">
       <div class="avatar-position">
-        <div class="{{user.avatar2.hairColor}} hair"></div>
-        <div class="{{user.avatar2.skinPigment}} pigment"></div>
-        <div class="{{user.avatar2.shirtColor}} shirt"></div>
+        <div class="{{user.avatar.hairColor}} hair"></div>
+        <div class="{{user.avatar.skinPigment}} pigment"></div>
+        <div class="{{user.avatar.shirtColor}} shirt"></div>
       </div>
     </div>
       
