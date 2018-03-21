@@ -17,7 +17,7 @@
     <mat-form-field>
       <mat-label>Give Gift</mat-label>
       <mat-select (change)="addGift($event)">
-        <mat-option *ngFor="let giftImage of giftImageNames" value="{{giftImage}}">
+        <mat-option *ngFor="let giftImage of giftImages" value="{{giftImage}}">
           <mat-icon svgIcon="{{giftImage}}"></mat-icon>
         </mat-option>
       </mat-select>
@@ -33,7 +33,9 @@
     <mat-card-content>
       <mat-tab-group>
         <mat-tab label="Skills">
-          <app-skills [skills]="user.skills"></app-skills>
+          <mat-list role="list">
+            <mat-list-item *ngFor="let skill of user.skills" role="listitem">{{skill}}</mat-list-item>
+          </mat-list>
         </mat-tab>
       </mat-tab-group>
     </mat-card-content>

@@ -13,7 +13,6 @@ import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NewUserDialogComponent } from './components/new-user-dialog/new-user-dialog.component';
 import { UserManagerAppComponent } from './user-manager-app.component';
-import { SkillsComponent } from './components/skills/skills.component';
 
 const routes: Routes = [
   {
@@ -43,8 +42,7 @@ const routes: Routes = [
     ToolbarComponent,
     MainContentComponent,
     SidenavComponent,
-    NewUserDialogComponent,
-    SkillsComponent
+    NewUserDialogComponent
   ],
   entryComponents: [
     NewUserDialogComponent
