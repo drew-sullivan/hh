@@ -44,8 +44,7 @@ export class UserService {
   }
 
   addGift(id: number, gift: string) {
-    const user = this.userById(id);
-    console.log(this.db.list(DB_PATH));
+    // WIP:
   }
 
   getNextId(): number {
