@@ -17,10 +17,12 @@ export abstract class BaseUserDialogComponent {
   HAIR_COLORS: string[] = HAIR_COLORS;
   SHIRT_COLORS: string[] = SHIRT_COLORS;
   user: User;
-  skills = [''];
 
   constructor(user: User) {
       this.user = user;
+      if (user.skills.length < 1) {
+        this.user.skills[0] = '';
+      }
   }
 
   name = new FormControl('', [Validators.required]);
@@ -34,16 +36,18 @@ export abstract class BaseUserDialogComponent {
 
   // TODO: Something is wrong with adding and removing skills
   addNewSkill() {
-    this.skills[this.skills.length] = '';
+    this.user.skills[this.user.skills.length] = '';
+    console.log(this.user.skills);
   }
 
   removeSkill(index: number) {
-    if (this.skills.length > 1) {
-      for (let i = index; i < this.skills.length; i++) {
-        this.skills[i] = this.skills[i + 1];
+    if (this.user.skills.length > 1) {
+      for (let i = index; i < this.user.skills.length; i++) {
+        this.user.skills[i] = this.user.skills[i + 1];
       }
-    this.skills.length--;
+    this.user.skills.length--;
     }
+    console.log(this.user.skills);
   }
 
   customTrackBy(index: number, obj: any): any {

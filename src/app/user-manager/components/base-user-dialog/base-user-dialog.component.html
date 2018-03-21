@@ -8,12 +8,12 @@
       <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
 
-    <div *ngFor="let s of skills; let i = index; trackBy: customTrackBy">
+    <div *ngFor="let s of user.skills; let i = index; trackBy: customTrackBy">
       <mat-form-field matInput style="width: 50%">
         <input name="skill-{{i}}" id="input-{{i}}" [(ngModel)]="user.skills[i]" matInput placeholder="Skill" name="skill">
       </mat-form-field>
-      <button [disabled]="skills.length == 1" mat-raised-button color="primary" (click)="removeSkill(i)">-</button>
-      <button *ngIf="i == skills.length - 1" [disabled]="skills.length > 4" mat-raised-button color="primary" (click)="addNewSkill()">+</button>
+      <button [disabled]="user.skills.length == 1" mat-raised-button color="primary" (click)="removeSkill(i)">-</button>
+      <button *ngIf="i == user.skills.length - 1" [disabled]="user.skills.length > 4" mat-raised-button color="primary" (click)="addNewSkill()">+</button>
     </div>
 
 
