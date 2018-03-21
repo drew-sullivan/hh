@@ -17,10 +17,8 @@
           </div>
           <div class="name-box">{{ user.name }}</div>
         </a>
-        <div class="claps-box">
-          <i class="material-icons" (click)="incrementClap(user.id)">thumb_up</i>
-          <span (click)="incrementClap(user.id)">{{user.numClaps}}</span>
-        </div>
+        <div class="inventory_present"></div>
+        <span class="gift-count">x&nbsp;{{user.gifts.length}}</span>
       </mat-list-item>
     </mat-nav-list>
 

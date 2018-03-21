@@ -11,39 +11,25 @@ export class UserService {
 
   private _users: BehaviorSubject<User[]>;
   private internalUserSubscription: User[];
-  private dataStore: {
-    users: User[]
-  };
   private nextId: number;
 
   constructor(private http: HttpClient, private db: AngularFireDatabase) {
-    this.dataStore = { users: [] };
     this._users = new BehaviorSubject<User[]>([]);
     this._users.subscribe(
-      newUsers => this.internalUserSubscription = newUsers
+      newUsers => this.internalUserSubscription = newUsers.sort(sortByNumGifts)
     );
-    this.getUsers('/users').subscribe(
+    this.getUsersFromDBbyPath('/users').subscribe(
       users => this._users.next(users)
     );
   }
 
-  getUsers(path): Observable<any[]> {
+  getUsersFromDBbyPath(path): Observable<any[]> {
     return this.db.list(path).valueChanges();
   }
 
   get users(): Observable<User[]> {
     return this._users.asObservable();
   }
-
-  // TODO: This still needs to be changed to use Behavior Subject
-  // addUser(user: User): Promise<User> {
-  //   return new Promise((resolver, reject) => {
-  //     user.id = this.dataStore.users.length + 1;
-  //     this.dataStore.users.push(user);
-  //     this._users.next(Object.assign({}, this.dataStore).users);
-  //     resolver(user);
-  //   });
-  // }
 
   addUser(user: User): void {
     user.id = this.getNextId();
@@ -59,11 +45,7 @@ export class UserService {
     return Math.max(...this.internalUserSubscription.map(user => user.id)) + 1;
   }
 
-  addClap(id: number) {
-    const userToAddClap = this.userById(id);
-    userToAddClap.numClaps++;
-  }
-
 }
 
-const sortByNumClaps = (user1: User, user2: User): number => user2.numClaps - user1.numClaps;
+// const sortByNumClaps = (user1: User, user2: User): number => user2.numClaps - user1.numClaps;
+const sortByNumGifts = (user1: User, user2: User): number => user2.gifts.length - user1.gifts.length;
