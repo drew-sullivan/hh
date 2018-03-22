@@ -13,7 +13,7 @@ const DB_PATH = '/users';
 export class UserService {
 
   private _users: BehaviorSubject<User[]>;
-  private internalUserSubscription: User[];
+  internalUserSubscription: User[];
   private nextId: number;
 
   constructor(

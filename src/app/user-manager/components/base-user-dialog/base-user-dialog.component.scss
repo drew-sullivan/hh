@@ -1,0 +1,21 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.avatar-box {
+  margin: auto;
+  min-height: 100px;
+}
+
+.avatar-position {
+  margin-left: 140px;
+}
+
+mat-option {
+  height: 90px !important;
+}
