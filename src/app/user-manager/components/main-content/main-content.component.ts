@@ -16,15 +16,15 @@ import { GIFTS } from '../../../services/gift-manifest';
 export class MainContentComponent implements OnInit {
 
   user: User;
-  giftImages = GIFTS;
+  // giftImages = GIFTS;
 
   constructor(
     private route: ActivatedRoute,
     private service: UserService,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer) {
-      for (const gift_image of this.giftImages) {
-        iconRegistry.addSvgIcon(`${gift_image}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${gift_image}.svg`));
+      for (const gift of GIFTS) {
+        iconRegistry.addSvgIcon(`${gift}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${gift}.svg`));
       }
     }
 
