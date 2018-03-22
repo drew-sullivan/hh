@@ -31,7 +31,6 @@ export class UserService {
     this.getUsersFromDBbyPath(DB_PATH).subscribe(
       users => this._users.next(users)
     );
-    this.items = afs.collection<User>('users');
   }
 
   getUsersFromDBbyPath(path): Observable<any[]> {
