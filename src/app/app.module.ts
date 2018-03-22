@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'user-manager', loadChildren: './user-manager/user-manager.module#UserManagerModule' },
-  // { path: 'demo', loadChildren: './demo/demo.module#DemoModule' },
   { path: '**', redirectTo: 'user-manager' }
 ];
 
