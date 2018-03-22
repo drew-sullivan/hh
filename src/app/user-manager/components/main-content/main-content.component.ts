@@ -16,7 +16,6 @@ import { GIFTS } from '../../../services/gift-manifest';
 export class MainContentComponent implements OnInit {
 
   user: User;
-  // giftImages = GIFTS;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,6 +43,9 @@ export class MainContentComponent implements OnInit {
       //   }, 1);
       // });
     });
+
+    // const users = firebase.database().ref('/users');
+
   }
 
   addGift(event: any) {
