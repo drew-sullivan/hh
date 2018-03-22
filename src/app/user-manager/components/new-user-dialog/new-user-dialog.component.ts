@@ -1,4 +1,5 @@
-import { GIFT_IMAGE_NAMES } from './../../../../assets/svg/manifest-of-icons';
+import { GIFTS } from './../../../../app/services/gift-manifest';
+import { CurrencyService } from './../../../services/currency-service.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
@@ -21,7 +22,7 @@ export class NewUserDialogComponent implements OnInit {
   SHIRT_COLORS: string[] = SHIRT_COLORS;
   user: User;
   skills = [''];
-  giftImageNames = GIFT_IMAGE_NAMES;
+  giftImageNames = GIFTS;
 
   hairColor = 'hair_bangs_2_brown';
   skinPigment = 'skin_ea8349';
@@ -29,7 +30,8 @@ export class NewUserDialogComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<NewUserDialogComponent>,
-    private userService: UserService) { }
+    private userService: UserService,
+    private currencyService: CurrencyService) { }
 
   name = new FormControl('', [Validators.required]);
 
@@ -66,8 +68,6 @@ export class NewUserDialogComponent implements OnInit {
   }
 
   addNewUser() {
-    this.user.numClaps = 0;
-    this.user.gifts = getRandomArrayItems(GIFT_IMAGE_NAMES, NUM_STARTING_GIFTS);
     this.userService.addUser(this.user);
     this.dismiss();
   }
@@ -75,13 +75,4 @@ export class NewUserDialogComponent implements OnInit {
   dismiss() {
     this.dialogRef.close(null);
   }
-
 }
-
-const getRandomArrayItems = (arr, numDesired) => {
-  const randomItems = [];
-  for (let i = 0; i < numDesired; i++) {
-    randomItems.push(arr[Math.floor(Math.random() * arr.length)]);
-  }
-  return randomItems;
-};
