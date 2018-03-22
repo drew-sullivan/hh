@@ -18,7 +18,7 @@ const NUM_STARTING_GIFTS = 3;
 })
 
 export class NewUserDialogComponent extends BaseUserDialogComponent implements OnInit {
-  
+
   SKIN_PIGMENTS: string[] = SKIN_PIGMENTS;
   HAIR_COLORS: string[] = HAIR_COLORS;
   SHIRT_COLORS: string[] = SHIRT_COLORS;
@@ -26,7 +26,6 @@ export class NewUserDialogComponent extends BaseUserDialogComponent implements O
   skills = [''];
   giftImageNames = GIFTS;
   title = 'Add New User';
-  giftImageNames = GIFT_IMAGE_NAMES;
 
   hairColor = 'hair_bangs_2_brown';
   skinPigment = 'skin_ea8349';
