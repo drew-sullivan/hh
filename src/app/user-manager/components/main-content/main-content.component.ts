@@ -1,4 +1,4 @@
-import { GIFT_IMAGE_NAMES } from './../../../../assets/svg/manifest-of-icons';
+import { CurrencyService } from './../../../services/currency-service.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +6,7 @@ import { User } from '../../models/user';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { MatIconRegistry } from '@angular/material/icon';
+import { GIFTS } from '../../../services/gift-manifest';
 
 @Component({
   selector: 'app-main-content',
@@ -15,7 +16,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 export class MainContentComponent implements OnInit {
 
   user: User;
-  giftImages = GIFT_IMAGE_NAMES;
+  giftImages = GIFTS;
 
   constructor(
     private route: ActivatedRoute,

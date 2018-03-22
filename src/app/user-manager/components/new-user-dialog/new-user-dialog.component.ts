@@ -1,4 +1,5 @@
-import { GIFT_IMAGE_NAMES } from './../../../../assets/svg/manifest-of-icons';
+import { GIFTS } from './../../../../app/services/gift-manifest';
+import { CurrencyService } from './../../../services/currency-service.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
@@ -15,7 +16,15 @@ const NUM_STARTING_GIFTS = 3;
   templateUrl: '../base-user-dialog/base-user-dialog.component.html',
   styleUrls: ['../base-user-dialog/base-user-dialog.component.scss', '../../../../assets/avatar-piece-locations.scss']
 })
+
 export class NewUserDialogComponent extends BaseUserDialogComponent implements OnInit {
+  
+  SKIN_PIGMENTS: string[] = SKIN_PIGMENTS;
+  HAIR_COLORS: string[] = HAIR_COLORS;
+  SHIRT_COLORS: string[] = SHIRT_COLORS;
+  user: User;
+  skills = [''];
+  giftImageNames = GIFTS;
   title = 'Add New User';
   giftImageNames = GIFT_IMAGE_NAMES;
 
@@ -25,10 +34,16 @@ export class NewUserDialogComponent extends BaseUserDialogComponent implements O
 
   constructor(
     private dialogRef: MatDialogRef<NewUserDialogComponent>,
-    private userService: UserService) { super(new User()); }
+    private userService: UserService,
+    private currencyService: CurrencyService) { super(new User()); }
+
+  name = new FormControl('', [Validators.required]);
+
+  getErrorMessage() {
+    return this.name.hasError('required') ? 'You must enter a name' : '';
+  }
 
   ngOnInit() {
-
     // adding avatar for previewing avatar choices
     this.user.avatar = {
       hairColor: this.hairColor,
@@ -38,8 +53,6 @@ export class NewUserDialogComponent extends BaseUserDialogComponent implements O
   }
 
   addNewUser() {
-    this.user.numClaps = 0;
-    this.user.gifts = getRandomArrayItems(GIFT_IMAGE_NAMES, NUM_STARTING_GIFTS);
     this.userService.addUser(this.user);
     this.dismiss();
   }
@@ -47,13 +60,4 @@ export class NewUserDialogComponent extends BaseUserDialogComponent implements O
   dismiss() {
     this.dialogRef.close(null);
   }
-
 }
-
-const getRandomArrayItems = (arr, numDesired) => {
-  const randomItems = [];
-  for (let i = 0; i < numDesired; i++) {
-    randomItems.push(arr[Math.floor(Math.random() * arr.length)]);
-  }
-  return randomItems;
-};

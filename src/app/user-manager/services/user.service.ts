@@ -1,3 +1,4 @@
+import { CurrencyService } from './../../services/currency-service.service';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +16,11 @@ export class UserService {
   internalUserSubscription: User[];
   private nextId: number;
 
-  constructor(private http: HttpClient, private db: AngularFireDatabase) {
+  constructor(
+    private http: HttpClient,
+    private db: AngularFireDatabase,
+    private currencyService: CurrencyService) {
+
     this._users = new BehaviorSubject<User[]>([]);
     this._users.subscribe(
       newUsers => this.internalUserSubscription = newUsers.sort(sortByNumGifts)
@@ -34,6 +39,8 @@ export class UserService {
   }
 
   addUser(user: User): void {
+    user.gifts = this.currencyService.generateNewUserItems();
+    console.log(user.gifts);
     user.id = this.getNextId();
     this.db.list(DB_PATH).push(user);
   }
@@ -54,3 +61,11 @@ export class UserService {
 }
 
 const sortByNumGifts = (user1: User, user2: User): number => user2.gifts.length - user1.gifts.length;
+
+const getRandomArrayItems = (arr, numDesired) => {
+  const randomItems = [];
+  for (let i = 0; i < numDesired; i++) {
+    randomItems.push(arr[Math.floor(Math.random() * arr.length)]);
+  }
+  return randomItems;
+};
