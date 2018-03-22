@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -9,14 +9,4 @@ import { DomSanitizer } from '@angular/platform-browser';
   `,
   styles: []
 })
-export class UserManagerAppComponent implements OnInit {
-
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIconSet(
-      sanitizer.bypassSecurityTrustResourceUrl('assets/avatars.svg'));
-   }
-
-  ngOnInit() {
-  }
-
-}
+export class UserManagerAppComponent { }

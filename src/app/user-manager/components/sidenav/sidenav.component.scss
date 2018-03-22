@@ -10,7 +10,7 @@ $box-90: 90px !important;
 }
 
 .app-sidenav {
-  width: 270px;
+  width: 300px;
 }
 
 .wrapper {
@@ -41,11 +41,17 @@ mat-option {
 
 .name-box {
   margin-left: 55px;
-  margin-top: 65px
+  margin-top: 65px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.claps-box {
-  margin-top: 56px;
-  display: inline-flex;
+.inventory_present {
+  margin-top: 28px;
+  padding-right: 10px;
 }
-  
+
+.gift-count {
+  margin-top: 64px;
+}

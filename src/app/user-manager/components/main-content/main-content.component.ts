@@ -1,4 +1,4 @@
-import { ICONS } from './../../../../assets/svg/manifest-of-icons';
+import { GIFT_IMAGE_NAMES } from './../../../../assets/svg/manifest-of-icons';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -15,15 +15,15 @@ import { MatIconRegistry } from '@angular/material/icon';
 export class MainContentComponent implements OnInit {
 
   user: User;
-  icons = ICONS;
+  giftImages = GIFT_IMAGE_NAMES;
 
   constructor(
     private route: ActivatedRoute,
     private service: UserService,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer) {
-      for (const icon of this.icons) {
-        iconRegistry.addSvgIcon(`${icon}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${icon}.svg`));
+      for (const gift_image of this.giftImages) {
+        iconRegistry.addSvgIcon(`${gift_image}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${gift_image}.svg`));
       }
     }
 
@@ -34,7 +34,7 @@ export class MainContentComponent implements OnInit {
 
       // this.user = null;
       this.user = this.service.userById(id); // TODO: This doesn't seem to work as intended. First user never loads.
-      console.log(this.user);
+      // console.log(this.user);
 
       // this.service.users.subscribe(users => {
       //   if (users.length === 0) { return; }
@@ -45,13 +45,10 @@ export class MainContentComponent implements OnInit {
     });
   }
 
-  incrementClap(id: number) {
-    this.service.addClap(id);
-  }
-
   addGift(event: any) {
     const gift = event.value;
     this.user.gifts.push(gift);
+    // this.service.addGift(this.user.id, gift);
   }
 
 }
