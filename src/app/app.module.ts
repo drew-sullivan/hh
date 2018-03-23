@@ -1,3 +1,4 @@
+import { AngularFirestore } from 'angularfire2/firestore';
 import { CurrencyService } from './services/currency-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,14 +14,11 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'user-manager', loadChildren: './user-manager/user-manager.module#UserManagerModule' },
-  { path: 'demo', loadChildren: './demo/demo.module#DemoModule' },
   { path: '**', redirectTo: 'user-manager' }
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -29,7 +27,7 @@ const routes: Routes = [
     AngularFireAuthModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [CurrencyService],
+  providers: [CurrencyService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

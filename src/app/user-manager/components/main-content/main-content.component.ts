@@ -16,15 +16,14 @@ import { GIFTS } from '../../../services/gift-manifest';
 export class MainContentComponent implements OnInit {
 
   user: User;
-  giftImages = GIFTS;
 
   constructor(
     private route: ActivatedRoute,
     private service: UserService,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer) {
-      for (const gift_image of this.giftImages) {
-        iconRegistry.addSvgIcon(`${gift_image}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${gift_image}.svg`));
+      for (const gift of GIFTS) {
+        iconRegistry.addSvgIcon(`${gift}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${gift}.svg`));
       }
     }
 
@@ -32,17 +31,16 @@ export class MainContentComponent implements OnInit {
     this.route.params.subscribe(params => {
       let id = params['id'];
       if (!id) { id = 1; }
+      this.user = null;
 
-      // this.user = null;
-      this.user = this.service.userById(id); // TODO: This doesn't seem to work as intended. First user never loads.
-      // console.log(this.user);
+      this.service.users.subscribe(users => {
+        if (users.length === 0) { return; }
 
-      // this.service.users.subscribe(users => {
-      //   if (users.length === 0) { return; }
+        setTimeout(() => {
+          this.user = this.service.userById(id);
+        }, 500);
+      });
 
-      //   setTimeout(() => {
-      //   }, 1);
-      // });
     });
   }
 

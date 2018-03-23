@@ -1,3 +1,4 @@
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { CurrencyService } from './../../services/currency-service.service';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
@@ -15,10 +16,12 @@ export class UserService {
   private _users: BehaviorSubject<User[]>;
   internalUserSubscription: User[];
   private nextId: number;
+  items: User[];
 
   constructor(
     private http: HttpClient,
     private db: AngularFireDatabase,
+    private afs: AngularFirestore,
     private currencyService: CurrencyService) {
 
     this._users = new BehaviorSubject<User[]>([]);
@@ -35,6 +38,7 @@ export class UserService {
   }
 
   get users(): Observable<User[]> {
+    console.log(this.items);
     return this._users.asObservable();
   }
 
