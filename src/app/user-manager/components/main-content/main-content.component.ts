@@ -1,3 +1,6 @@
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { CurrencyService } from './../../../services/currency-service.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
@@ -16,15 +19,20 @@ import { GIFTS } from '../../../services/gift-manifest';
 export class MainContentComponent implements OnInit {
 
   user: User;
+  FBUsers: Observable<any[]>;
+  giftImages = GIFTS;
 
   constructor(
     private route: ActivatedRoute,
     private service: UserService,
     private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    db: AngularFireDatabase) {
       for (const gift of GIFTS) {
         iconRegistry.addSvgIcon(`${gift}`, sanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svg/${gift}.svg`));
       }
+      this.FBUsers = db.list('users').valueChanges();
+      console.log(this.FBUsers);
     }
 
   ngOnInit() {
