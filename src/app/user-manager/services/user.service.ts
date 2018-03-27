@@ -1,66 +1,85 @@
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { CurrencyService } from './../../services/currency-service.service';
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { resolve } from 'q';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { catchError, map, tap } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
-const DB_PATH = '/users';
+import { resolve } from 'q';
+
+import { CurrencyService } from './../../services/currency-service.service';
+import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
 
+  private usersUrl = 'api/users';  // URL to web api
   private _users: BehaviorSubject<User[]>;
   internalUserSubscription: User[];
   private nextId: number;
   items: User[];
 
   constructor(
-    private http: HttpClient,
-    private db: AngularFireDatabase,
-    private afs: AngularFirestore,
-    private currencyService: CurrencyService) {
+    private currencyService: CurrencyService,
+    private http: HttpClient) { }
 
-    this._users = new BehaviorSubject<User[]>([]);
-    this._users.subscribe(
-      newUsers => this.internalUserSubscription = newUsers.sort(sortByNumGifts)
+  // getUsers(): Observable<User[]> {
+  //   return this.http.get<User[]>(this.usersUrl)
+  //     .pipe(
+  //       catchError(this.handleError('getUsers', []))
+  //     );
+  // }
+
+  getUsers (): Observable<User[]> {
+    return this.http.get<User[]>(this.usersUrl)
+      .pipe(
+        catchError(this.handleError('getUsers', []))
+      );
+  }
+
+  getUser(id: number): Observable<User> {
+    const url = `${this.usersUrl}/${id}`;
+    return this.http.get<User>(url).pipe(
+      catchError(this.handleError<User>(`getUser with id = ${id}`))
     );
-    this.getUsersFromDBbyPath(DB_PATH).subscribe(
-      users => this._users.next(users)
-    );
   }
 
-  getUsersFromDBbyPath(path): Observable<any[]> {
-    return this.db.list(path).valueChanges();
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 
-  get users(): Observable<User[]> {
-    console.log(this.items);
-    return this._users.asObservable();
-  }
+  // getUsersFromDBbyPath(path): Observable<any[]> {
+  //   return this.db.list(path).valueChanges();
+  // }
 
-  addUser(user: User): void {
-    user.gifts = this.currencyService.generateNewUserItems();
-    console.log(user.gifts);
-    user.id = this.getNextId();
-    this.db.list(DB_PATH).push(user);
-  }
+  // get users(): Observable<User[]> {
+  //   console.log(this.items);
+  //   return this._users.asObservable();
+  // }
 
-  userById(id: number): User {
-    const filterUsers: User[] = this.internalUserSubscription.filter(user => user.id === +id);
-    return filterUsers[0];
-  }
+  // addUser(user: User): void {
+  //   user.gifts = this.currencyService.generateNewUserItems();
+  //   console.log(user.gifts);
+  //   user.id = this.getNextId();
+  //   this.db.list(DB_PATH).push(user);
+  // }
 
-  addGift(id: number, gift: string) {
-    // WIP:
-  }
+  // userById(id: number): User {
+  //   const filterUsers: User[] = this.internalUserSubscription.filter(user => user.id === +id);
+  //   return filterUsers[0];
+  // }
 
-  getNextId(): number {
-    return Math.max(...this.internalUserSubscription.map(user => user.id)) + 1;
-  }
+  // addGift(id: number, gift: string) {
+  //   // WIP:
+  // }
+
+  // getNextId(): number {
+  //   return Math.max(...this.internalUserSubscription.map(user => user.id)) + 1;
+  // }
 
 }
 

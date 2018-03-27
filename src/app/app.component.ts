@@ -1,7 +1,6 @@
-import { Observable } from 'rxjs/Observable';
-import { AngularFirestore } from 'angularfire2/firestore';
-import * as firebase from 'firebase/app';
 import { Component, OnInit } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +15,6 @@ export class AppComponent {
   disabled = false;
   items: Observable<any[]>;
 
-  // constructor(db: AngularFirestore) {
-  //   this.items = db.collection('items').valueChanges();
-  //   console.log(this.items);
-  // }
+  constructor() { }
 
 }

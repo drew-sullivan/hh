@@ -52,7 +52,8 @@ export class NewUserDialogComponent extends BaseUserDialogComponent implements O
   }
 
   addNewUser() {
-    this.userService.addUser(this.user);
+    alert('This needs to be implemented! :)');
+    // this.userService.addUser(this.user);
     this.dismiss();
   }
 

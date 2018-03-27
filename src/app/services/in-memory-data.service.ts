@@ -1,12 +1,6 @@
-import { Injectable } from '@angular/core';
-
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-@Injectable()
 export class InMemoryDataService implements InMemoryDbService {
-
-  constructor() { }
-
   createDb() {
     const users = [
       { 'avatar' : {
@@ -50,6 +44,6 @@ export class InMemoryDataService implements InMemoryDbService {
         'skills' : [ 'Python', 'Flask', 'Django' ]
       }
     ];
-    return users;
+    return {users};
   }
 }

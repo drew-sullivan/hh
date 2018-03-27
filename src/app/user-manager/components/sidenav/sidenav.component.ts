@@ -1,9 +1,11 @@
-import { User } from './../../models/user';
 import { Component, OnInit, NgZone, ViewChild, EventEmitter, Output } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material';
+
+import { Observable } from 'rxjs/Observable';
+
+import { User } from './../../models/user';
+import { UserService } from '../../services/user.service';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -28,7 +30,8 @@ export class SidenavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = this.userService.users;
+    // this.users = this.userService.users;
+    this.users = this.userService.getUsers();
 
     this.router.events.subscribe(() => {
       if (this.isScreenSmall()) {
