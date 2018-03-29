@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { GIFTS } from '../../../services/gift-manifest';
+import { Observable } from 'rxjs/observable';
 
 @Component({
   selector: 'app-main-content',
@@ -15,7 +16,7 @@ import { GIFTS } from '../../../services/gift-manifest';
 })
 export class MainContentComponent implements OnInit {
 
-  user: User;
+  user: Observable<User>;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,14 +32,17 @@ export class MainContentComponent implements OnInit {
     this.route.params.subscribe(params => {
       let id = params['id'];
       if (!id) { id = 1; }
-      this.user = null;
+     // this.user = null;
 
-      this.service.users.subscribe(users => {
+      this.service.getUsers().subscribe(users => {
         if (users.length === 0) { return; }
 
         setTimeout(() => {
-          this.user = this.service.userById(id);
-        }, 500);
+          this.user = this.service.getUserById(id);
+          this.user.subscribe((a) => {
+            console.log(a);
+          })
+        }, 5000);
       });
 
     });

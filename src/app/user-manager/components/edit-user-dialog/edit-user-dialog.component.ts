@@ -17,9 +17,10 @@ export class EditUserDialogComponent extends BaseUserDialogComponent implements 
 
   constructor(private dialogRef: MatDialogRef<EditUserDialogComponent>,
     private userService: UserService) {
-      super(userService.internalUserSubscription[2]);
-      const user = userService.internalUserSubscription[2];
-      console.log(user.skills);
+      super(new User());
+  //    super(userService.internalUserSubscription[2]);
+  //    const user = userService.internalUserSubscription[2];
+  //    console.log(user.skills);
     }
 
   ngOnInit() {

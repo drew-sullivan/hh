@@ -5,13 +5,13 @@
   <mat-card>
     <mat-card-header>
       <div class="avatar-box">
-        <div class="{{user.avatar.hairColor}} hair"></div>
-        <div class="{{user.avatar.skinPigment}} pigment"></div>
-        <div class="{{user.avatar.shirtColor}} shirt"></div>
+        <div class="{{user.avatar.hairColor | async }} hair"></div>
+        <div class="{{user.avatar.skinPigment | async }} pigment"></div>
+        <div class="{{user.avatar.shirtColor | async }} shirt"></div>
       </div>
-      <div class="name-box">{{ user.name }}</div>
+      <div class="name-box">{{ user.name | async  }}</div>
       <div class="inventory_present"></div>
-      <span class="gift-count">x&nbsp;{{user.gifts.length}}</span>
+      <span class="gift-count">x&nbsp;{{user.gifts.length | async }}</span>
     </mat-card-header>
 
     <mat-form-field>
@@ -23,9 +23,9 @@
       </mat-select>
     </mat-form-field>
     
-    <mat-label>{{user.name}}'s gifts:</mat-label>
+    <mat-label>{{user.name | async }}'s gifts:</mat-label>
     <div class="gift-box">
-      <div *ngFor="let gift of user.gifts" class="user-gift">
+      <div *ngFor="let gift of user.gifts | async " class="user-gift">
         <mat-icon svgIcon="{{gift}}"></mat-icon>
       </div>
     </div>
@@ -34,7 +34,7 @@
       <mat-tab-group>
         <mat-tab label="Skills">
           <mat-list role="list">
-            <mat-list-item *ngFor="let skill of user.skills" role="listitem">{{skill}}</mat-list-item>
+            <mat-list-item *ngFor="let skill of user.skills | async " role="listitem">{{skill}}</mat-list-item>
           </mat-list>
         </mat-tab>
       </mat-tab-group>

@@ -3,6 +3,7 @@ import { CurrencyService } from './../../services/currency-service.service';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { resolve } from 'q';
@@ -13,8 +14,6 @@ const DB_PATH = '/users';
 @Injectable()
 export class UserService {
 
-  private _users: BehaviorSubject<User[]>;
-  internalUserSubscription: User[];
   private nextId: number;
   items: User[];
 
@@ -23,23 +22,16 @@ export class UserService {
     private db: AngularFireDatabase,
     private afs: AngularFirestore,
     private currencyService: CurrencyService) {
-
-    this._users = new BehaviorSubject<User[]>([]);
-    this._users.subscribe(
-      newUsers => this.internalUserSubscription = newUsers.sort(sortByNumGifts)
-    );
-    this.getUsersFromDBbyPath(DB_PATH).subscribe(
-      users => this._users.next(users)
-    );
   }
 
-  getUsersFromDBbyPath(path): Observable<any[]> {
-    return this.db.list(path).valueChanges();
+  getUsers() {
+    return this.http.get('http://localhost:8000/api/users')
+    .map(res => (res as any).users);
   }
 
-  get users(): Observable<User[]> {
-    console.log(this.items);
-    return this._users.asObservable();
+  getUserById(id: number) {
+    return this.http.get('http://localhost:8000/api/users/${id}')
+    .map(res => (res as any).filteredUsers[0]);
   }
 
   addUser(user: User): void {
@@ -49,17 +41,13 @@ export class UserService {
     this.db.list(DB_PATH).push(user);
   }
 
-  userById(id: number): User {
-    const filterUsers: User[] = this.internalUserSubscription.filter(user => user.id === +id);
-    return filterUsers[0];
-  }
-
   addGift(id: number, gift: string) {
     // WIP:
   }
 
   getNextId(): number {
-    return Math.max(...this.internalUserSubscription.map(user => user.id)) + 1;
+    // return Math.max(...this.internalUserSubscription.map(user => user.id)) + 1;
+     return 100;
   }
 
 }
