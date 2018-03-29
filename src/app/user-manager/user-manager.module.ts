@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { UserService } from './services/user.service';
 import { NewUserDialogComponent } from './components/new-user-dialog/new-user-dialog.component';
 import { UserManagerAppComponent } from './user-manager-app.component';
 
@@ -36,9 +35,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  providers: [
-    UserService
-  ],
+  providers: [],
   declarations: [
     UserManagerAppComponent,
     ToolbarComponent,

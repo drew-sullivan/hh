@@ -5,7 +5,7 @@ import { MatSidenav } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 
 import { User } from './../../models/user';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 

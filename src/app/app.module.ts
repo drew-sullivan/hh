@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
-import { CurrencyService } from './services/currency-service.service';
+import { CurrencyService, UserService } from './services/index';
 
 import { AppComponent } from './app.component';
 
@@ -26,7 +26,7 @@ const routes: Routes = [
     ),
     RouterModule.forRoot(routes)
   ],
-  providers: [ CurrencyService ],
+  providers: [ CurrencyService, UserService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

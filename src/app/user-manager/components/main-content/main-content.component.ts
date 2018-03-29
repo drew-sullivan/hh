@@ -1,4 +1,3 @@
-
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -6,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 
 import { User } from '../../models/user';
-import { CurrencyService } from './../../../services/currency-service.service';
-import { UserService } from '../../services/user.service';
+import { CurrencyService, UserService } from '../../../services/index';
 
 import { GIFTS } from '../../../services/gift-manifest';
 

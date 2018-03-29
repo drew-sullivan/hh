@@ -1,11 +1,10 @@
 import { GIFTS } from './../../../../app/services/gift-manifest';
-import { CurrencyService } from './../../../services/currency-service.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
 
 import { BaseUserDialogComponent } from '../base-user-dialog/base-user-dialog.component';
-import { UserService } from '../../services/user.service';
+import { UserService, CurrencyService } from '../../../services/index';
 import { User } from '../../models/user';
 import { SKIN_PIGMENTS, HAIR_COLORS, SHIRT_COLORS } from '../../../../assets/avatar-codes';
 

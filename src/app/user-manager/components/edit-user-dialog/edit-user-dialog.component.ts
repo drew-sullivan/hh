@@ -3,7 +3,7 @@ import { MatDialogRef } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
 
 import { BaseUserDialogComponent } from '../base-user-dialog/base-user-dialog.component';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 import { User } from '../../models/user';
 
 @Component({
